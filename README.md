@@ -3,8 +3,10 @@
 UI-agnostic **squarified hierarchical cushion-treemap** layout for Rust.
 Computes rectangles; your renderer draws them.
 
+Repository: https://github.com/sandraschi/cushion-treemap
+
 Extracted from [WinCraft](https://github.com/sandraschi/wincraft)'s WizTree-style
-disk treemap and generalized over any tree.
+disk treemap (which now depends on this crate) and generalized over any tree.
 
 ## Why another treemap crate?
 
@@ -42,6 +44,18 @@ let tiles = hierarchical_layout(&root, bounds, 5);
 - `hierarchical_layout_with_options` - custom padding / header / depth tuning.
 - `color::{depth_color, extension_color}` - optional WizTree-style palette.
 
+## Demo
+
+No renderer needed to see it work:
+
+```sh
+cargo run --example synthetic_svg
+```
+
+It builds a fake project tree, runs the layout, and writes a self-contained
+SVG (native `<title>` hover tooltips with name + size) to your temp dir.
+Open the printed path in a browser.
+
 ## Rendering cushions (van Wijk style)
 
 Fill the tile with its base color, lighten top/left edges, darken
@@ -51,7 +65,7 @@ WinCraft's egui page is the reference implementation.
 ## Status
 
 - `0.1.0`: layout + colors + tests, no I/O, no renderer deps (only `serde`).
-- Not yet on crates.io - publish with `cargo publish -p cushion-treemap --dry-run` first.
+- Awaiting first crates.io publish (needs an owner token).
 
 ## License
 
